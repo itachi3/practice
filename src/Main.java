@@ -9,8 +9,8 @@ public class Main {
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        //moduleArray(arr);
-        moduleDP(arr);
+        moduleArray(arr);
+        //moduleDP(arr);
     }
 
     static void moduleList(Integer arr[]) {

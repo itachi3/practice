@@ -5,6 +5,16 @@ import java.util.List;
  * Created by G on 07/05/17.
  */
 public class Array {
+
+    private static int[] stack = new int[10];
+
+    private static int top1, top2;
+
+    static {
+        top1 = -1;
+        top2 = stack.length;
+    }
+
     static Integer[] quickSort(Integer[] a, int l, int h) {
         if (l < h) {
             int p = partition(a, l, h);
@@ -296,5 +306,39 @@ public class Array {
             }
         }
         return maxSoFar;
+    }
+
+    static void push(int key, boolean stack1) {
+        if (top2 - top1 - 1 < 0) {
+            System.out.println("Stack is full!!");
+            return;
+        }
+        if (stack1) {
+            top1++;
+            stack[top1] = key;
+        } else {
+            top2--;
+            stack[top2] = key;
+        }
+    }
+
+    static int pop(boolean stack1) {
+        int val = -1;
+        if (stack1) {
+            if (top1 < 0) {
+                System.out.println("Stack 1 is empty!!");
+            } else {
+                val = stack[top1];
+                top1--;
+            }
+        } else {
+            if (top2 > stack.length - 1) {
+                System.out.println("Stack 2 is empty!!");
+            } else {
+                val = stack[top2];
+                top2++;
+            }
+        }
+        return val;
     }
 }
