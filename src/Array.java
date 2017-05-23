@@ -341,4 +341,27 @@ public class Array {
         }
         return val;
     }
+
+    static int maxSum(int[] arr1, int[] arr2) {
+        int sum1 = 0, sum2 = 0, j = 0, sum = 0;
+
+        for (int i = 0; i < arr1.length; i++) {
+            sum1 += arr1[i];
+            while (j < arr2.length && arr2[j] <= arr1[i]) {
+                sum2 += arr2[j];
+                if (arr2[j] == arr1[i]) {
+                    sum += sum1 > sum2 ? sum1 : sum2;
+                    sum1 = sum2 = 0;
+                }
+                j++;
+            }
+        }
+
+        while (j < arr2.length) {
+            sum2 += arr2[j];
+            j++;
+        }
+        sum += sum1 > sum2 ? sum1 : sum2;
+        return sum;
+    }
 }

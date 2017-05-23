@@ -66,6 +66,9 @@ public class Main {
         arr = Array.quickSort(arr, 0, arr.length - 1);
         System.out.println("Searching : " + Array.binarySearch(arr, 4, 0, arr.length - 1));
         System.out.println("Occurrence : " + Array.countOccurrence(arr, 4));
+        int[] ar1 = {2, 3, 7, 10, 12};
+        int[] ar2 = {1, 5, 7, 8};
+        System.out.println("Max path sum : " + Array.maxSum(ar1, ar2));
     }
 
     static void moduleDP(Integer arr[]) {
