@@ -9,89 +9,110 @@ class LRU {
     private static final int MAX_SIZE = 5;
 
     static class Node {
-        Integer page;
-        Node next;
+        Integer data;
+        Node left;
+        Node right;
 
-        Node(Integer data) {
-            page = data;
+        public Node(Integer data) {
+            this.data = data;
+            this.left = this.right = null;
         }
 
         @Override
         public String toString() {
-            return "Node{" + page + '}';
+            return "Node(" + data + ')';
         }
     }
 
-    private static Node headPtr = null;
+    static Map<Integer, Node> locationMap = new HashMap<>();
 
-    private static Node tailPtr = null;
+    static Node head = null;
 
-    private static int listLength = 0;
+    static Node tail = null;
 
-    private static Map<Integer, Node> positionMap = new HashMap<>();
-
-    static Node visit(Integer pageData) {
-        Node position = null;
-        if (positionMap.containsKey(pageData)) {
-            position = positionMap.get(pageData);
-        }
-        Node newNode;
-        if (position == null) {
-            if (listLength >= MAX_SIZE) {
-                deque();
-            }
-            newNode = new Node(pageData);
-        } else {
-            newNode = delete(position);
-        }
-        enque(newNode);
-        positionMap.put(pageData, newNode);
-        return tailPtr;
-    }
+    static int currSize = 0;
 
     private static void deque() {
-        positionMap.remove(headPtr.page);
-        headPtr = headPtr.next;
-        listLength--;
-    }
-
-    private static Node delete(Node position) {
-        Node itr = headPtr, prev = null;
-        while (!itr.equals(position)) {
-            prev = itr;
-            itr = itr.next;
+        //Tail
+        if(tail == head) {
+          tail = null;
         }
-        if (itr == headPtr) {
-            headPtr = headPtr.next;
-        } else {
-            prev.next = itr.next;
-        }
-        if (itr == tailPtr) {
-            tailPtr = prev;
-        }
-        itr.next = null;
-        listLength--;
-        return itr;
+        //Map
+        locationMap.remove(head.data);
+        //Size
+        currSize--;
+        //Head
+        Node node = head;
+        head = head.right;
+        head.left = null;
+        node.right = null;
     }
 
     private static void enque(Node node) {
-        if (tailPtr == null) {
-            tailPtr = node;
+        //Tail
+        if(tail == null) {
+            tail = node;
         } else {
-            tailPtr.next = node;
-            tailPtr = tailPtr.next;
+            node.left = tail;
+            tail.right = node;
+            tail = node;
         }
-        if (headPtr == null) {
-            headPtr = tailPtr;
+        //Head
+        if(head == null) {
+            head = node;
         }
-        listLength++;
+        //Map
+        locationMap.put(node.data, node);
+        //Size
+        currSize++;
+    }
+
+    private static Node delete(Node location) {
+        Node prev = location.left, next = location.right;
+        if(prev != null) {
+            prev.right = next;
+        }
+        if(next != null) {
+            next.left = prev;
+        }
+        location.left = location.right = null;
+        //Head
+        if(head == location) {
+            head = next;
+        }
+        //Tail
+        if(tail == location) {
+            tail = prev;
+        }
+        //Map
+        locationMap.remove(location.data);
+        //Size
+        currSize--;
+        return location;
+    }
+
+    static Node visit(Integer data) {
+        Node nodeLocation = null, newNode;
+        if(locationMap.containsKey(data)) {
+            nodeLocation = locationMap.get(data);
+        }
+        if(nodeLocation == null) {
+            if(currSize >= MAX_SIZE) {
+                deque();
+            }
+            newNode = new Node(data);
+        } else {
+            newNode = delete(nodeLocation);
+        }
+        enque(newNode);
+        return newNode;
     }
 
     static void print() {
-        Node itr = headPtr;
+        Node itr = head;
         while (itr != null) {
-            System.out.print(itr.page + ",");
-            itr = itr.next;
+            System.out.print(itr.data + ",");
+            itr = itr.right;
         }
         System.out.println();
     }

@@ -1,5 +1,5 @@
+import java.util.*;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * Created by G on 10/04/17.
@@ -166,6 +166,30 @@ class Tree {
         }
 
         return (left != -1) ? left : right;
+    }
+
+    void verticalOrder() {
+        Map<Integer, List<Integer>> verticalOrderMap = new TreeMap<>();
+        verticalOrderMap = modifiedDFS(verticalOrderMap, root, 0);
+        System.out.println();
+        for (Map.Entry<Integer, List<Integer>> entry : verticalOrderMap.entrySet()) {
+            System.out.println(entry.getKey() + " => " + entry.getValue());
+        }
+    }
+
+    Map modifiedDFS(Map<Integer, List<Integer>> verticalOrderMap, Node node, int level) {
+        if(node == null) {
+            return verticalOrderMap;
+        }
+        List<Integer> valueList = new ArrayList<>();
+        if(verticalOrderMap.containsKey(level)) {
+            valueList = verticalOrderMap.get(level);
+        }
+        valueList.add(node.data);
+        verticalOrderMap.put(level, valueList);
+        verticalOrderMap = modifiedDFS(verticalOrderMap, node.left, level -1);
+        verticalOrderMap = modifiedDFS(verticalOrderMap, node.right, level + 1);
+        return verticalOrderMap;
     }
 
     void populateBST(Integer arr[]) {

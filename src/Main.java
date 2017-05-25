@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        Integer arr[] = {13, 13, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
+        Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
@@ -16,6 +16,7 @@ public class Main {
 
     static void moduleLRUCache(Integer arr[]) {
         for (Integer page : arr) {
+            System.out.println(page);
             System.out.println(LRU.visit(page));
             LRU.print();
         }
@@ -39,6 +40,7 @@ public class Main {
         Tree tree = new Tree();
         tree.populateBST(arr);
         tree.BFS();
+        tree.verticalOrder();
         System.out.print("\nDFS :");
         tree.DFS(tree.getRoot());
         System.out.print("\nInOrder : ");
