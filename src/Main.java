@@ -5,12 +5,20 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
+        Integer arr[] = {13, 13, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        moduleArray(arr);
+        //moduleArray(arr);
         //moduleDP(arr);
+        moduleLRUCache(arr);
+    }
+
+    static void moduleLRUCache(Integer arr[]) {
+        for (Integer page : arr) {
+            System.out.println(LRU.visit(page));
+            LRU.print();
+        }
     }
 
     static void moduleList(Integer arr[]) {
