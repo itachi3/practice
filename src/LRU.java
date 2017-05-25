@@ -30,8 +30,6 @@ class LRU {
 
     static Node tail = null;
 
-    static int currSize = 0;
-
     private static void deque() {
         //Tail
         if(tail == head) {
@@ -39,8 +37,6 @@ class LRU {
         }
         //Map
         locationMap.remove(head.data);
-        //Size
-        currSize--;
         //Head
         Node node = head;
         head = head.right;
@@ -63,8 +59,6 @@ class LRU {
         }
         //Map
         locationMap.put(node.data, node);
-        //Size
-        currSize++;
     }
 
     private static Node delete(Node location) {
@@ -86,8 +80,6 @@ class LRU {
         }
         //Map
         locationMap.remove(location.data);
-        //Size
-        currSize--;
         return location;
     }
 
@@ -97,7 +89,7 @@ class LRU {
             nodeLocation = locationMap.get(data);
         }
         if(nodeLocation == null) {
-            if(currSize >= MAX_SIZE) {
+            if(locationMap.size() >= MAX_SIZE) {
                 deque();
             }
             newNode = new Node(data);
