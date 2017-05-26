@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -141,6 +142,21 @@ public class Array {
             mid = (start + end) / 2;
         }
         return result;
+    }
+
+    static boolean duplicateWithinK(Integer[] arr, int k) {
+        Map<Integer, Integer> kMap = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (kMap.containsKey(arr[i])) {
+                System.out.println("Duplicate element : " + arr[i] + " Index : " + i);
+                return true;
+            }
+            if (i + 1 >= k) {
+                kMap.remove(arr[i + 1 - k]);
+            }
+            kMap.put(arr[i], i);
+        }
+        return false;
     }
 
     static boolean isArithmeticProgression(Integer[] arr) {

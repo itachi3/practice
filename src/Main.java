@@ -9,9 +9,9 @@ public class Main {
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        //moduleArray(arr);
+        moduleArray(arr);
         //moduleDP(arr);
-        moduleLRUCache(arr);
+        //moduleLRUCache(arr);
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -65,6 +65,7 @@ public class Main {
 
     static void moduleArray(Integer arr[]) {
         Array.subArraysOfSameAverage(arr);
+        Array.duplicateWithinK(arr, 3);
         System.out.println("Minimum pages : " + Array.minimumSumWithMCuts(arr, 2));
         System.out.println("Arithmetic profression: " + Array.isArithmeticProgression(arr));
         System.out.println("Subarray size : " + Array.subArraySizeLessThenK(arr, 14));
