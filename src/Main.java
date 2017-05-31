@@ -5,13 +5,15 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
+        //Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        moduleArray(arr);
+        //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
+        Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
+        moduleGraph(graphMatrix);
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -88,5 +90,10 @@ public class Main {
         System.out.println("Sub-array of given sum : " + Arrays.toString(DP.subArrayOfGivenSum(arr, 23)));
         Integer[] tickets = new Integer[]{1, 2, 4, 5, 7, 29, 30};
         System.out.println("Ticket price : " + DP.getTicketPrice(tickets));
+    }
+
+    static void moduleGraph(Integer[][] graphMatrix) {
+        Graph.insert(graphMatrix);
+        Graph.print();
     }
 }
