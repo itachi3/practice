@@ -95,5 +95,6 @@ public class Main {
     static void moduleGraph(Integer[][] graphMatrix) {
         Graph.insert(graphMatrix);
         Graph.print();
+        Graph.dfs();
     }
 }

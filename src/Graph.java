@@ -35,7 +35,11 @@ class Graph {
                     tail.next = node;
                 }
             }
-            adjList.add(head);
+            if (head != null) {
+                adjList.add(head);
+            } else {
+                adjList.add(new Node(-1, -1));
+            }
         }
     }
 
@@ -49,6 +53,28 @@ class Graph {
             System.out.println();
         }
     }
-    
 
+    static void dfs() {
+        boolean[] visited = new boolean[adjList.size()];
+        System.out.print("DFS order : ");
+        for (int i = 0; i < adjList.size(); i++) {
+            if (!visited[i]) {
+                dfsUtil(i, visited);
+            }
+        }
+        System.out.println();
+    }
+
+    static void dfsUtil(Integer vertex, boolean[] visited) {
+        if (vertex == -1 || visited[vertex]) {
+            return;
+        }
+        visited[vertex] = true;
+        Node node = adjList.get(vertex);
+        while (node != null) {
+            dfsUtil(node.vertex, visited);
+            node = node.next;
+        }
+        System.out.print(vertex + ",");
+    }
 }
