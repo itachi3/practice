@@ -441,17 +441,18 @@ public class Array {
         int hop = 1;
         while (!queue.isEmpty()) {
             String currentCity = queue.remove();
-            if(visited.contains(currentCity)) {
-                continue;
+            if(!visited.contains(currentCity)) {
+                if (queue.contains(value)) {
+                    return hop;
+                }
+                if (routeMap.containsKey(currentCity)) {
+                    queue.addAll(routeMap.get(currentCity));
+                    hop++;
+                }
+                visited.add(currentCity);
             }
-            if (queue.contains(value)) {
-                return hop;
-            }
-            visited.add(currentCity);
-            queue.addAll( routeMap.get(currentCity) );
-            hop++;
         }
-        
+
         return -1;
     }
 }
