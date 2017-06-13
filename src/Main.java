@@ -5,15 +5,15 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        //Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
+        Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        //moduleArray(arr);
+        moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
-        Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
-        moduleGraph(graphMatrix);
+        //Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
+        //moduleGraph(graphMatrix);
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -82,6 +82,7 @@ public class Main {
         int[] ar1 = {2, 3, 7, 10, 12};
         int[] ar2 = {1, 5, 7, 8};
         System.out.println("Max path sum : " + Array.maxSum(ar1, ar2));
+        System.out.println("Min coin needed : " + Array.minCoinChange(ar1, 13));
     }
 
     static void moduleDP(Integer arr[]) {

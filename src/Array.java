@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.LinkedList;
 
 /**
  * Created by G on 07/05/17.
@@ -359,6 +357,26 @@ public class Array {
         return val;
     }
 
+    static int minCoinChange(int []coins, int sum) {
+        int []minChange = new int[sum+1];
+        for (int i = 0; i < sum; i++) {
+            minChange[i] = Integer.MAX_VALUE;
+        }
+        minChange[0] = 0;
+        int min, afterChange;
+        for (int i = 1; i <= sum; i++) {
+            min = Integer.MAX_VALUE;
+            for (int j = 0; j < coins.length; j++) {
+                afterChange = i - coins[j];
+                if(afterChange >= 0 && min > minChange[afterChange]) {
+                    min = minChange[afterChange] + 1;
+                }
+            }
+            minChange[i] = min;
+        }
+        return minChange[sum];
+    }
+
     static int maxSum(int[] arr1, int[] arr2) {
         int sum1 = 0, sum2 = 0, j = 0, sum = 0;
 
@@ -380,5 +398,60 @@ public class Array {
         }
         sum += sum1 > sum2 ? sum1 : sum2;
         return sum;
+    }
+
+    void constructGraph(List<String> input) {
+        int i = 0;
+        int routes = Integer.parseInt(input.get(i));
+        i = i + 1;
+        Map<String, List<String>> routeMap = new HashMap<>();
+        for (int j = 0; j < routes; j++) {
+            String[] cities = input.get(i).split(" ");
+            List<String> connectedCities = new ArrayList<>();
+            if(routeMap.containsKey(cities[0])) {
+                connectedCities = routeMap.get(cities[0]);
+            }
+            connectedCities.add(cities[1]);
+            routeMap.put(cities[0], connectedCities);
+            i++;
+        }
+        queries(i, input, routeMap);
+    }
+
+    void queries(int i, List<String> input, Map<String, List<String>> routeMap) {
+        int queries = Integer.parseInt(input.get(i));
+        i = i + 1;
+        for (int j = 0; j < queries; j++) {
+            String[] cities = input.get(i).split(" ");
+            System.out.println(bfs(cities[0], cities[1], routeMap));
+            i++;
+        }
+    }
+
+    int bfs(String key, String value, Map<String, List<String>> routeMap) {
+        if (!routeMap.containsKey(key)) {
+            System.out.println(-1);
+        }
+
+        Queue<String> queue = new LinkedList<String>() {{
+            addAll(routeMap.get(key));
+        }};
+
+        Set<String> visited = new HashSet<>();
+        int hop = 1;
+        while (!queue.isEmpty()) {
+            String currentCity = queue.remove();
+            if(visited.contains(currentCity)) {
+                continue;
+            }
+            if (queue.contains(value)) {
+                return hop;
+            }
+            visited.add(currentCity);
+            queue.addAll( routeMap.get(currentCity) );
+            hop++;
+        }
+        
+        return -1;
     }
 }
