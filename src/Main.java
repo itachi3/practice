@@ -9,11 +9,12 @@ public class Main {
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        moduleArray(arr);
+        //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
         //moduleGraph(graphMatrix);
+        moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -72,7 +73,6 @@ public class Main {
         System.out.println("Arithmetic profression: " + Array.isArithmeticProgression(arr));
         System.out.println("Subarray size : " + Array.subArraySizeLessThenK(arr, 14));
         System.out.println("Max zeros between ones : " + Array.maxZerosBetweenOnes(1030));
-        System.out.println("Min value of expr : " + Array.minValueOfTheExpression("1+2*3+4*5"));
         System.out.println("Searching : " + Array.binarySearchItr(arr, 4));
         System.out.println("Position [start, end] : " + Arrays.toString(Array.positionToSwapForSorting(arr)));
         System.out.println("QuickSort : " + Arrays.toString(Array.quickSort(arr, 0, arr.length - 1)));
@@ -83,6 +83,11 @@ public class Main {
         int[] ar2 = {1, 5, 7, 8};
         System.out.println("Max path sum : " + Array.maxSum(ar1, ar2));
         System.out.println("Min coin needed : " + Array.minCoinChange(ar1, 13));
+    }
+
+    static void moduleString() {
+        System.out.println("Lottery possible : " + Strings.isLotteryTicket("1122334", new HashSet<>()));
+        System.out.println("Min value of expr : " + Strings.minValueOfTheExpression("1+2*3+4*5"));
     }
 
     static void moduleDP(Integer arr[]) {

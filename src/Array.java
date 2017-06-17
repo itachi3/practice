@@ -219,47 +219,6 @@ public class Array {
         return -1;
     }
 
-    static int minValueOfTheExpression(String expr) {
-        List<Integer> num = new ArrayList<Integer>();
-        List<String> opr = new ArrayList<String>();
-        int i = 0;
-        for (i = 0; i < expr.length(); i++) {
-            if (expr.charAt(i) == '+' || expr.charAt(i) == '*') {
-                opr.add("" + expr.charAt(i));
-            } else {
-                num.add(Integer.parseInt("" + expr.charAt(i)));
-            }
-        }
-        int L = num.size();
-        int[][] minVal = new int[L][L];
-        for (i = 0; i < L; i++) {
-            for (int j = 0; j < L; j++) {
-                minVal[i][j] = Integer.MAX_VALUE;
-                if (i == j) {
-                    minVal[i][j] = num.get(i);
-                }
-            }
-        }
-
-        int minTemp = 0;
-        for (int k = 2; k <= L; k++) {
-            for (i = 0; i < L - k + 1; i++) {
-                int j = i + k - 1;
-                for (int s = i; s < j; s++) {
-                    if (opr.get(s).equals("+")) {
-                        minTemp = minVal[i][s] + minVal[s + 1][j];
-                    } else {
-                        minTemp = minVal[i][s] * minVal[s + 1][j];
-                    }
-                    if (minTemp < minVal[i][j]) {
-                        minVal[i][j] = minTemp;
-                    }
-                }
-            }
-        }
-        return minVal[0][L - 1];
-    }
-
     static int maxZerosBetweenOnes(int n) {
         int prev = 0, curr = 0;
         while (n > 0) {
@@ -308,21 +267,6 @@ public class Array {
         return subArraySize;
     }
 
-    static int maxWordsInSentences(String s) {
-        String[] words = s.split(" ");
-        int maxSoFar = 0, maxEndingHere = 0;
-        for (String word : words) {
-            maxEndingHere++;
-            if (word.contains("?")) {
-                if (maxEndingHere > maxSoFar) {
-                    maxSoFar = maxEndingHere;
-                }
-                maxEndingHere = 0;
-            }
-        }
-        return maxSoFar;
-    }
-
     static void push(int key, boolean stack1) {
         if (top2 - top1 - 1 < 0) {
             System.out.println("Stack is full!!");
@@ -357,8 +301,8 @@ public class Array {
         return val;
     }
 
-    static int minCoinChange(int []coins, int sum) {
-        int []minChange = new int[sum+1];
+    static int minCoinChange(int[] coins, int sum) {
+        int[] minChange = new int[sum + 1];
         for (int i = 0; i < sum; i++) {
             minChange[i] = Integer.MAX_VALUE;
         }
@@ -368,7 +312,7 @@ public class Array {
             min = Integer.MAX_VALUE;
             for (int j = 0; j < coins.length; j++) {
                 afterChange = i - coins[j];
-                if(afterChange >= 0 && min > minChange[afterChange]) {
+                if (afterChange >= 0 && min > minChange[afterChange]) {
                     min = minChange[afterChange] + 1;
                 }
             }
@@ -400,6 +344,11 @@ public class Array {
         return sum;
     }
 
+
+    /*
+        Given a flight between cities and set of queries
+        Find the minimum number of ops to reach the destination
+     */
     void constructGraph(List<String> input) {
         int i = 0;
         int routes = Integer.parseInt(input.get(i));
@@ -408,7 +357,7 @@ public class Array {
         for (int j = 0; j < routes; j++) {
             String[] cities = input.get(i).split(" ");
             List<String> connectedCities = new ArrayList<>();
-            if(routeMap.containsKey(cities[0])) {
+            if (routeMap.containsKey(cities[0])) {
                 connectedCities = routeMap.get(cities[0]);
             }
             connectedCities.add(cities[1]);
@@ -441,7 +390,7 @@ public class Array {
         int hop = 1;
         while (!queue.isEmpty()) {
             String currentCity = queue.remove();
-            if(!visited.contains(currentCity)) {
+            if (!visited.contains(currentCity)) {
                 if (queue.contains(value)) {
                     return hop;
                 }
