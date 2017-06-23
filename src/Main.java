@@ -7,14 +7,14 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
-        //moduleList(arr);
+        moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
         //moduleGraph(graphMatrix);
-        moduleString();
+        //moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -36,7 +36,17 @@ public class Main {
         list.delete(13);
         list.print();
         System.out.print("\nMiddle : " + list.findMiddle());
-        System.out.print("\nPalindrome : " + list.palindrome(list.getHead()));
+        System.out.println("\nPalindrome : " + list.palindrome(list.getHead()));
+
+        LinkedList circular = new LinkedList();
+        circular.circularInsert(2);
+        circular.circularPrint();
+        circular.circularInsert(3);
+        circular.circularPrint();
+        circular.circularDelete(3);
+        circular.circularPrint();
+        circular.circularDelete(2);
+        circular.circularPrint();
     }
 
     static void modulesBST(Integer arr[]) {

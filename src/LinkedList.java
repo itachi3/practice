@@ -20,6 +20,8 @@ class LinkedList {
 
     Node head;
 
+    Node tail;
+
     static Node staticHead;
 
     private Node insert(Integer key, Node start) {
@@ -114,5 +116,64 @@ class LinkedList {
 
     public Node getHead() {
         return head;
+    }
+
+    void circularInsert(Integer key) {
+        if (tail == null) {
+            tail = new Node(key);
+            tail.next = tail;
+            head = tail;
+        } else {
+            Node newNode = new Node(key);
+            newNode.next = tail.next;
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+
+    void circularPrint() {
+        Node itr = head;
+        if (itr == null) {
+            System.out.println("None");
+            return;
+        }
+        while (itr.next != head) {
+            System.out.print(itr.data + ", ");
+            itr = itr.next;
+        }
+        System.out.print(itr.data);
+        System.out.println();
+    }
+
+    Node circularDelete(Integer key) {
+        Node prev = null, curr = head;
+        if (curr == null) {
+            return null;
+        }
+        while (curr.next != head) {
+            if (curr.data.equals(key)) {
+                if (prev == null) {
+                    head = curr.next;
+                    tail.next = head;
+                } else {
+                    prev.next = curr.next;
+                }
+                curr.next = null;
+                return curr;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+        if (curr.data.equals(key)) {
+            if (head == tail) {
+                head = tail = null;
+            } else {
+                tail = prev;
+                tail.next = head;
+            }
+            curr.next = null;
+            return curr;
+        }
+        return null;
     }
 }
