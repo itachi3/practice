@@ -5,7 +5,7 @@ import java.util.LinkedList;
  * Created by G on 10/04/17.
  */
 class Tree {
-    private class Node {
+    class Node {
         Integer data;
         Node left;
         Node right;
@@ -28,6 +28,8 @@ class Tree {
 
     static int h = 0;
 
+    static boolean balanced = true;
+
     private Node insertBST(Integer key, Node head) {
         if (null == head) {
             head = new Node(key);
@@ -41,19 +43,21 @@ class Tree {
         return head;
     }
 
-    void insertBST(Integer key) {
+    private void insertBST(Integer key) {
         Node head = this.root;
         this.root = insertBST(key, head);
     }
 
-    Node minValueNode(Node start) {
+
+
+    private Node minValueNode(Node start) {
         while (start.left != null) {
             start = start.left;
         }
         return start;
     }
 
-    Node deleteBST(Integer key, Node start) {
+    private Node deleteBST(Integer key, Node start) {
         if (start == null) {
             return null;
         }
@@ -98,7 +102,7 @@ class Tree {
         }
     }
 
-    void DFS(Node node) {
+    static void DFS(Node node) {
         if (node == null) {
             return;
         }
@@ -108,7 +112,7 @@ class Tree {
         System.out.print(node.data + ", ");
     }
 
-    void leftView(Node node, int currHeight) {
+    static void leftView(Node node, int currHeight) {
 
         if (node == null) {
             return;
@@ -129,7 +133,7 @@ class Tree {
         return Math.max(height(start.left), height(start.right)) + 1;
     }
 
-    void inOrder(Node node) {
+    static void inOrder(Node node) {
         if (node == null) {
             return;
         }
@@ -150,7 +154,7 @@ class Tree {
         return true;
     }
 
-    Integer LCA(int n1, int n2, Node node) {
+    static Integer LCA(int n1, int n2, Node node) {
         if (node == null) {
             return -1;
         }
@@ -177,7 +181,7 @@ class Tree {
         }
     }
 
-    Map modifiedDFS(Map<Integer, List<Integer>> verticalOrderMap, Node node, int level) {
+    private Map modifiedDFS(Map<Integer, List<Integer>> verticalOrderMap, Node node, int level) {
         if(node == null) {
             return verticalOrderMap;
         }
@@ -192,9 +196,35 @@ class Tree {
         return verticalOrderMap;
     }
 
+    static int isBalanced(Node root, int h) {
+        if(balanced) {
+            if (root == null) {
+                return h;
+            }
+            int lh = isBalanced(root.left, h + 1);
+            int rh = isBalanced(root.right, h + 1);
+            if (Math.abs(lh - rh) > 1) {
+                balanced = false;
+            }
+            return Math.max(lh, rh);
+        }
+        return -1;
+    }
+
     void populateBST(Integer arr[]) {
         for (Integer element : arr)
             insertBST(element);
+    }
+
+    Node populateBalanced(Integer arr[], int l, int h) {
+        if (l > h) {
+            return null;
+        }
+        int mid = (l + h) / 2;
+        Node root = new Node(arr[mid]);
+        root.left = populateBalanced(arr,  l, mid - 1);
+        root.right = populateBalanced(arr,  mid + 1, h);
+        return root;
     }
 
     Node getRoot() {

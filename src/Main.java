@@ -6,8 +6,8 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws Exception {
         Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
-        //modulesBST(arr);
-        moduleList(arr);
+        modulesBST(arr);
+        //moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
         //moduleDP(arr);
@@ -55,18 +55,26 @@ public class Main {
         tree.BFS();
         tree.verticalOrder();
         System.out.print("\nDFS :");
-        tree.DFS(tree.getRoot());
+        Tree.DFS(tree.getRoot());
         System.out.print("\nInOrder : ");
-        tree.inOrder(tree.getRoot());
+        Tree.inOrder(tree.getRoot());
         System.out.println("\nHeight : " + tree.height(tree.getRoot()));
         System.out.print("\nSearch : " + tree.searchBST(18, tree.getRoot()));
         System.out.print("\nLeft View : ");
-        tree.leftView(tree.getRoot(), 1);
-        System.out.print("\n LCA : " + tree.LCA(5, 11, tree.getRoot()));
+        Tree.leftView(tree.getRoot(), 1);
+        System.out.print("\n LCA : " + Tree.LCA(5, 11, tree.getRoot()));
         System.out.print("\n Delete : ");
         tree.deleteBST(14);
         System.out.print("\nInOrder : ");
-        tree.inOrder(tree.getRoot());
+        Tree.inOrder(tree.getRoot());
+        Tree.isBalanced(tree.getRoot(), 0);
+        System.out.print("\nBalanced : " + Tree.balanced);
+
+        Integer ar[] = {1,2,3,4,5,6,7,8};
+        Tree tree2 = new Tree();
+        Tree.Node root = tree2.populateBalanced(ar, 0, ar.length - 1);
+        System.out.print("\nDFS :");
+        Tree.DFS(root);
     }
 
     static void moduleMinHeap(Integer arr[]) {
