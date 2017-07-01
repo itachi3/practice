@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        //Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
+        Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
@@ -14,22 +14,7 @@ public class Main {
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
         //moduleGraph(graphMatrix);
-        //moduleString();
-        Strings.Solution("photo.jpg, Warsaw, 2013-09-05 14:08:15\n" +
-                "john.png, London, 2015-06-20 15:13:22\n" +
-                "myFriends.png, Warsaw, 2013-09-05 14:07:13\n" +
-                "Eiffel.jpg, Paris, 2015-07-23 08:03:02\n" +
-                "pisatower.jpg, Paris, 2015-07-22 23:59:59\n" +
-                "BOB.jpg, London, 2015-08-05 00:02:03\n" +
-                "notredame.png, Paris, 2015-09-01 12:00:00\n" +
-                "me.jpg, Warsaw, 2013-09-06 15:40:22\n" +
-                "a.png, Warsaw, 2016-02-13 13:33:50\n" +
-                "b.jpg, Warsaw, 2016-01-02 15:12:22\n" +
-                "c.jpg, Warsaw, 2016-01-02 14:34:30\n" +
-                "d.jpg, Warsaw, 2016-01-02 15:15:01\n" +
-                "e.png, Warsaw, 2016-01-02 09:49:09\n" +
-                "f.png, Warsaw, 2016-01-02 10:55:32\n" +
-                "g.jpg, Warsaw, 2016-02-29 22:13:11");
+        moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -113,6 +98,21 @@ public class Main {
     static void moduleString() {
         System.out.println("Lottery possible : " + Strings.isLotteryTicket("1122334", new HashSet<>()));
         System.out.println("Min value of expr : " + Strings.minValueOfTheExpression("1+2*3+4*5"));
+        Strings.Solution("photo.jpg, Warsaw, 2013-09-05 14:08:15\n" +
+                "john.png, London, 2015-06-20 15:13:22\n" +
+                "myFriends.png, Warsaw, 2013-09-05 14:07:13\n" +
+                "Eiffel.jpg, Paris, 2015-07-23 08:03:02\n" +
+                "pisatower.jpg, Paris, 2015-07-22 23:59:59\n" +
+                "BOB.jpg, London, 2015-08-05 00:02:03\n" +
+                "notredame.png, Paris, 2015-09-01 12:00:00\n" +
+                "me.jpg, Warsaw, 2013-09-06 15:40:22\n" +
+                "a.png, Warsaw, 2016-02-13 13:33:50\n" +
+                "b.jpg, Warsaw, 2016-01-02 15:12:22\n" +
+                "c.jpg, Warsaw, 2016-01-02 14:34:30\n" +
+                "d.jpg, Warsaw, 2016-01-02 15:15:01\n" +
+                "e.png, Warsaw, 2016-01-02 09:49:09\n" +
+                "f.png, Warsaw, 2016-01-02 10:55:32\n" +
+                "g.jpg, Warsaw, 2016-02-29 22:13:11");
     }
 
     static void moduleDP(Integer arr[]) {
