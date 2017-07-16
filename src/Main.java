@@ -6,8 +6,8 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws Exception {
         Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
-        modulesBST(arr);
-        //moduleList(arr);
+        //modulesBST(arr);
+        moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
         //moduleDP(arr);
@@ -29,7 +29,10 @@ public class Main {
         LinkedList list = new LinkedList();
         list.populate(arr);
         list.print();
-        list.reverse();
+        list.swap(4,5);
+        list.print();
+
+        /*list.reverse();
         list.print();
         list.reverse(list.getHead());
         list.print();
@@ -46,7 +49,7 @@ public class Main {
         circular.circularDelete(3);
         circular.circularPrint();
         circular.circularDelete(2);
-        circular.circularPrint();
+        circular.circularPrint();*/
     }
 
     static void modulesBST(Integer arr[]) {

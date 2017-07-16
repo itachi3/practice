@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Created by G on 10/04/17.
  */
@@ -15,6 +17,35 @@ class LinkedList {
             return "DataNode{" +
                     "data=" + data +
                     '}';
+        }
+    }
+
+    class SearchNode {
+        Node prev;
+        Node found;
+
+        SearchNode() {
+            prev = found = null;
+        }
+
+        public SearchNode(Node prev, Node found) {
+            this.prev = prev;
+            this.found = found;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof SearchNode)) return false;
+
+            SearchNode that = (SearchNode) o;
+
+            return found.data.equals(that.found.data);
+        }
+
+        @Override
+        public int hashCode() {
+            return found.data;
         }
     }
 
@@ -103,6 +134,46 @@ class LinkedList {
         else
             chk = false;
         return chk;
+    }
+
+    void swap(Integer a, Integer b) {
+        Set<SearchNode> foundNodes = new HashSet<>();
+        Node prev = null, curr = head;
+        while (curr != null) {
+            if(curr.data.equals(a) || curr.data.equals(b)) {
+                foundNodes.add(new SearchNode(prev, curr));
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+        Object[] result = foundNodes.toArray();
+        if(result.length == 2) {
+            SearchNode n1 = (SearchNode) result[0];
+            SearchNode n2 = (SearchNode) result[1];
+
+            if(n1.prev == null) {
+                head = n2.found;
+            }
+            if (n2.prev == null) {
+                head = n1.found;
+            }
+            if(n1.prev != null) {
+                n1.prev.next = n2.found;
+            }
+            if (n2.prev !=  null) {
+                n2.prev.next = n1.found;
+            }
+
+            if (n2.prev == n1.found) {
+                Node n2Next = n2.found.next;
+                n2.found.next = n1.found;
+                n1.found.next = n2Next;
+            } else {
+                Node n1Next = n1.found.next;
+                n1.found.next = n2.found.next;
+                n2.found.next = n1Next;
+            }
+        }
     }
 
     void print() {
