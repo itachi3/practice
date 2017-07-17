@@ -9,12 +9,12 @@ public class Main {
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        //moduleArray(arr);
+        moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
         //moduleGraph(graphMatrix);
-        moduleString();
+        //moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -93,6 +93,11 @@ public class Main {
         int[] ar2 = {1, 5, 7, 8};
         System.out.println("Max path sum : " + Array.maxSum(ar1, ar2));
         System.out.println("Min coin needed : " + Array.minCoinChange(ar1, 13));
+        Map<String, List<Integer>> movieMap = new HashMap<>();
+        movieMap.put("Shining", Arrays.asList(14, 15, 16));
+        movieMap.put("Kill bill", Arrays.asList(14, 15));
+        movieMap.put("Pulp fiction", Arrays.asList(14, 15));
+        Array.schedule(movieMap);
     }
 
     static void moduleString() {
