@@ -126,4 +126,32 @@ public class Strings {
             System.out.println(pic.getNewName());
         }
     }
+
+    static void permute(char[] val, int l, int h) {
+        if (l == h) {
+            System.out.println(val);
+            return;
+        }
+        for (int i = l; i < h; i++) {
+            char x = val[l];
+            val[l] = val[i];
+            val[i] = x;
+            permute(val, l + 1, h);
+            x = val[l];
+            val[l] = val[i];
+            val[i] = x;
+        }
+    }
+
+    static void permuteLowerCase(char[] val, int l, int h) {
+        if (l == h) {
+            System.out.println(val);
+            return;
+        }
+        for (int i = l; i < h; i++) {
+            val[i] = Character.toLowerCase(val[i]);
+            permuteLowerCase(val, l + 1, h);
+            val[i] = Character.toUpperCase(val[i]);
+        }
+    }
 }

@@ -9,12 +9,12 @@ public class Main {
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        moduleArray(arr);
+        //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
         //moduleGraph(graphMatrix);
-        //moduleString();
+        moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -101,6 +101,11 @@ public class Main {
     }
 
     static void moduleString() {
+        char[] val = "ABC".toCharArray();
+        System.out.println("Permutation");
+        Strings.permute(val, 0, val.length);
+        System.out.println("Permutation LowerCase");
+        Strings.permuteLowerCase(val, 0, val.length);
         System.out.println("Lottery possible : " + Strings.isLotteryTicket("1122334", new HashSet<>()));
         System.out.println("Min value of expr : " + Strings.minValueOfTheExpression("1+2*3+4*5"));
         Strings.Solution("photo.jpg, Warsaw, 2013-09-05 14:08:15\n" +
