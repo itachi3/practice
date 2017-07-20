@@ -404,4 +404,31 @@ public class Array {
 
         return -1;
     }
+
+    static Set<Integer> getSchedule(Object[] keys, Set<Integer> visited, Map<String, List<Integer>> map, int i) {
+        if (i >= map.size()) {
+            return visited;
+        }
+
+        String key = keys[i].toString();
+        for (Integer elem : map.get(key)) {
+            if (!visited.contains(elem)) {
+                visited.add(elem);
+                visited.addAll(getSchedule(keys, visited, map, i + 1));
+                if (visited.size() == map.size()) {
+                    return visited;
+                } else {
+                    visited.clear();
+                }
+            }
+        }
+        return visited;
+    }
+
+    static void schedule(Map<String, List<Integer>> map) {
+        Object[] keys = map.keySet().toArray();
+        Set<Integer> visited = new HashSet<>();
+        visited = getSchedule(keys, visited, map, 0);
+        System.out.println("Final schedule :" + visited);
+    }
 }

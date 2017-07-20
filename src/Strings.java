@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.text.ParseException;
+import java.util.*;
 
 /**
  * Created by G on 17/06/17.
@@ -82,5 +81,77 @@ public class Strings {
             }
         }
         return minVal[0][L - 1];
+    }
+
+    static HashMap getBuckets(String s) {
+        if (s == null || s.isEmpty()) {
+            return new HashMap();
+        }
+        HashMap<String, List<Photos>> cityToPhotoMap = new HashMap<>();
+        String[] pics = s.split("\n");
+        for (int i = 0; i < pics.length; i++) {
+            String[] chunks = pics[i].split(",");
+            List<Photos> valueSet = new ArrayList<>();
+            chunks[1] = chunks[1].trim();
+            chunks[2] = chunks[2].trim();
+            if (cityToPhotoMap.containsKey(chunks[1])) {
+                valueSet = cityToPhotoMap.get(chunks[1]);
+            }
+            try {
+                valueSet.add(new Photos(chunks, i));
+            } catch (ParseException e) {
+                System.out.println("Parse exception on : " + pics[i]);
+            }
+            cityToPhotoMap.put(chunks[1], valueSet);
+        }
+        return cityToPhotoMap;
+    }
+
+    static void Solution(String s) {
+        //Sorted
+        HashMap<String, List<Photos>> cityToPhotoMap = getBuckets(s);
+        List<Photos> pics = new ArrayList<>();
+        for (Map.Entry<String, List<Photos>> entry : cityToPhotoMap.entrySet()) {
+            List<Photos> newPics = entry.getValue();
+            newPics.sort(Comparator.comparingLong(Photos::getEpochTime));
+            int i = 1;
+            for (Photos pic : newPics) {
+                pic.setNewName(String.valueOf(newPics.size()).length(), i);
+                i++;
+            }
+            pics.addAll(newPics);
+        }
+        pics.sort(Comparator.comparingLong(Photos::getIndex));
+        for (Photos pic : pics) {
+            System.out.println(pic.getNewName());
+        }
+    }
+
+    static void permute(char[] val, int l, int h) {
+        if (l == h) {
+            System.out.println(val);
+            return;
+        }
+        for (int i = l; i < h; i++) {
+            char x = val[l];
+            val[l] = val[i];
+            val[i] = x;
+            permute(val, l + 1, h);
+            x = val[l];
+            val[l] = val[i];
+            val[i] = x;
+        }
+    }
+
+    static void permuteLowerCase(char[] val, int l, int h) {
+        if (l == h) {
+            System.out.println(val);
+            return;
+        }
+        for (int i = l; i < h; i++) {
+            val[i] = Character.toLowerCase(val[i]);
+            permuteLowerCase(val, l + 1, h);
+            val[i] = Character.toUpperCase(val[i]);
+        }
     }
 }
