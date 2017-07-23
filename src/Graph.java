@@ -77,4 +77,29 @@ class Graph {
         }
         System.out.print(vertex + ",");
     }
+
+    static void spiralTravel(Integer[][] graphMatrix) {
+        int left, right, top, down;
+        left = top =  0;
+        right = down = graphMatrix.length - 1;
+        System.out.println("Spiral print : ");
+        while (left < right || down > top) {
+                for (int j = left; j <= right; j++) {
+                    System.out.print(graphMatrix[top][j] + ", ");
+                }
+                top++;
+                for (int i = top; i <= down; i++) {
+                    System.out.print(graphMatrix[i][right] + ", ");
+                }
+                right--;
+                for (int j = right; j >= left; j--) {
+                    System.out.print(graphMatrix[down][j] + ", ");
+                }
+                down--;
+                for (int i = down; i >= top; i--) {
+                    System.out.print(graphMatrix[i][left] + ", ");
+                }
+                left++;
+        }
+    }
 }

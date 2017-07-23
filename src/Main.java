@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by G on 10/04/17.
@@ -9,11 +11,11 @@ public class Main {
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        moduleArray(arr);
+        //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
-        //Integer graphMatrix[][] = {{0, 0, 1, 1, 0}, {1, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 4}, {0, 0, 0, 0, 0}};
-        //moduleGraph(graphMatrix);
+        Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
+        moduleGraph(graphMatrix);
         //moduleString();
     }
 
@@ -136,6 +138,9 @@ public class Main {
                 "e.png, Warsaw, 2016-01-02 09:49:09\n" +
                 "f.png, Warsaw, 2016-01-02 10:55:32\n" +
                 "g.jpg, Warsaw, 2016-02-29 22:13:11");
+        String []values = {"54","546","548","60"};
+        List<String> biggestNumber = Arrays.stream(values).sorted((e1, e2) -> (e2+e1).compareTo(e1+e2)).collect(Collectors.toList());
+        System.out.println("Biggest number : " + biggestNumber);
     }
 
     static void moduleDP(Integer arr[]) {
@@ -150,5 +155,6 @@ public class Main {
         Graph.insert(graphMatrix);
         Graph.print();
         Graph.dfs();
+        Graph.spiralTravel(graphMatrix);
     }
 }
