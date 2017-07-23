@@ -431,4 +431,27 @@ public class Array {
         visited = getSchedule(keys, visited, map, 0);
         System.out.println("Final schedule :" + visited);
     }
+
+    static int getDeflectionPoint(Integer[] arr) {
+        Integer []minFromLeft = Arrays.copyOf(arr, arr.length);
+        Integer []minFromRight = Arrays.copyOf(arr, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            if(i-1>0) {
+                minFromLeft[i] = (arr[i] < minFromLeft[i-1]) ? arr[i] : minFromLeft[i-1];
+            }
+            int rightIndex = arr.length - (i + 1);
+            if(rightIndex < arr.length - 1) {
+                minFromRight[rightIndex] = (arr[rightIndex] < minFromRight[rightIndex + 1]) ? arr[rightIndex] : minFromRight[rightIndex + 1];
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            //Extremes are not considered deflection point
+            if(i - 1 > 0 && i < arr.length - 1) {
+                if(minFromLeft[i-1] < arr[i] && minFromRight[i+1] > arr[i]) {
+                    return arr[i];
+                }
+            }
+        }
+        return -1;
+    }
 }
