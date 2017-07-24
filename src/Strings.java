@@ -154,4 +154,22 @@ public class Strings {
             val[i] = Character.toUpperCase(val[i]);
         }
     }
+
+    static int getLongestPalindromicSubSequence(String str) {
+        int LPS[][] = new int[str.length()][str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            LPS[i][i] = 1;
+        }
+        for (int s = 2; s < str.length(); s++) {
+            for (int i = 0; i < str.length() - s; i++) {
+                int j = i + s;
+                if (str.charAt(i) == str.charAt(j)) {
+                    LPS[i][j] = LPS[i + 1][j - 1] + 2;
+                } else {
+                    LPS[i][j] = Math.max(LPS[i + 1][j], LPS[i][j - 1]);
+                }
+            }
+        }
+        return LPS[0][str.length() - 1];
+    }
 }

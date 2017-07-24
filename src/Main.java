@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -14,9 +13,9 @@ public class Main {
         //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
-        Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
-        moduleGraph(graphMatrix);
-        //moduleString();
+        //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
+        //moduleGraph(graphMatrix);
+        moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -31,7 +30,7 @@ public class Main {
         LinkedList list = new LinkedList();
         list.populate(arr);
         list.print();
-        list.swap(4,5);
+        list.swap(4, 5);
         list.print();
 
         /*list.reverse();
@@ -75,7 +74,7 @@ public class Main {
         Tree.isBalanced(tree.getRoot(), 0);
         System.out.print("\nBalanced : " + Tree.balanced);
 
-        Integer ar[] = {1,2,3,4,5,6,7,8};
+        Integer ar[] = {1, 2, 3, 4, 5, 6, 7, 8};
         Tree tree2 = new Tree();
         Tree.Node root = tree2.populateBalanced(ar, 0, ar.length - 1);
         System.out.print("\nDFS :");
@@ -138,9 +137,10 @@ public class Main {
                 "e.png, Warsaw, 2016-01-02 09:49:09\n" +
                 "f.png, Warsaw, 2016-01-02 10:55:32\n" +
                 "g.jpg, Warsaw, 2016-02-29 22:13:11");
-        String []values = {"54","546","548","60"};
-        List<String> biggestNumber = Arrays.stream(values).sorted((e1, e2) -> (e2+e1).compareTo(e1+e2)).collect(Collectors.toList());
+        String[] values = {"54", "546", "548", "60"};
+        List<String> biggestNumber = Arrays.stream(values).sorted((e1, e2) -> (e2 + e1).compareTo(e1 + e2)).collect(Collectors.toList());
         System.out.println("Biggest number : " + biggestNumber);
+        System.out.println("LPS : " + Strings.getLongestPalindromicSubSequence("BBABCBCAB"));
     }
 
     static void moduleDP(Integer arr[]) {
