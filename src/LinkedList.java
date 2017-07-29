@@ -140,27 +140,27 @@ class LinkedList {
         Set<SearchNode> foundNodes = new HashSet<>();
         Node prev = null, curr = head;
         while (curr != null) {
-            if(curr.data.equals(a) || curr.data.equals(b)) {
+            if (curr.data.equals(a) || curr.data.equals(b)) {
                 foundNodes.add(new SearchNode(prev, curr));
             }
             prev = curr;
             curr = curr.next;
         }
         Object[] result = foundNodes.toArray();
-        if(result.length == 2) {
+        if (result.length == 2) {
             SearchNode n1 = (SearchNode) result[0];
             SearchNode n2 = (SearchNode) result[1];
 
-            if(n1.prev == null) {
+            if (n1.prev == null) {
                 head = n2.found;
             }
             if (n2.prev == null) {
                 head = n1.found;
             }
-            if(n1.prev != null) {
+            if (n1.prev != null) {
                 n1.prev.next = n2.found;
             }
-            if (n2.prev !=  null) {
+            if (n2.prev != null) {
                 n2.prev.next = n1.found;
             }
 
@@ -246,5 +246,31 @@ class LinkedList {
             return curr;
         }
         return null;
+    }
+
+    void reverseSize(int k) {
+        boolean first = true;
+        Node prev = null, curr = head, prevHead = null, currHead;
+        int itr = 1;
+        while (curr != null) {
+            currHead = curr;
+            while (curr != null && itr <= k) {
+                Node next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+                itr++;
+            }
+            if (first) {
+                head = prev;
+                first = false;
+            }
+            if (prevHead != null) {
+                prevHead.next = prev;
+                currHead.next = null;
+            }
+            prevHead = currHead;
+            itr = 1;
+        }
     }
 }

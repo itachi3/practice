@@ -8,14 +8,14 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
-        //moduleList(arr);
+        moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
         //moduleGraph(graphMatrix);
-        moduleString();
+        //moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -33,6 +33,9 @@ public class Main {
         list.swap(4, 5);
         list.print();
 
+        list.reverseSize(3);
+        list.print();
+
         /*list.reverse();
         list.print();
         list.reverse(list.getHead());
@@ -40,8 +43,9 @@ public class Main {
         list.delete(13);
         list.print();
         System.out.print("\nMiddle : " + list.findMiddle());
-        System.out.println("\nPalindrome : " + list.palindrome(list.getHead()));
+        System.out.println("\nPalindrome : " + list.palindrome(list.getHead()));*/
 
+        /*Circular List
         LinkedList circular = new LinkedList();
         circular.circularInsert(2);
         circular.circularPrint();
