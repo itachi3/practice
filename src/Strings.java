@@ -154,4 +154,22 @@ public class Strings {
             val[i] = Character.toUpperCase(val[i]);
         }
     }
+
+    static int minInsertion(String str) {
+       int [][]table = new int[str.length() + 1][str.length() + 1];
+       for (int gap = 1; gap < str.length(); gap++) {
+           for (int i = 0; i < str.length(); i++) {
+               int j = i + gap;
+               if (j >= str.length()) {
+                   continue;
+               }
+               if(str.charAt(i) == str.charAt(j)) {
+                   table[i][j] = table[i + 1][j - 1];
+               } else {
+                   table[i][j] = Math.min(table[i+1][j], table[i][j-1]) + 1;
+               }
+           }
+       }
+       return table[0][str.length() - 1];
+    }
 }

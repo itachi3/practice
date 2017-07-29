@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -14,9 +13,9 @@ public class Main {
         //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
-        Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
-        moduleGraph(graphMatrix);
-        //moduleString();
+        //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
+        //moduleGraph(graphMatrix);
+        moduleString();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -141,6 +140,7 @@ public class Main {
         String []values = {"54","546","548","60"};
         List<String> biggestNumber = Arrays.stream(values).sorted((e1, e2) -> (e2+e1).compareTo(e1+e2)).collect(Collectors.toList());
         System.out.println("Biggest number : " + biggestNumber);
+        System.out.println("Min insertion palindrome : " + Strings.minInsertion("abcd"));
     }
 
     static void moduleDP(Integer arr[]) {
