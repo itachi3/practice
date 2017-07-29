@@ -190,4 +190,35 @@ public class Strings {
         }
         return LPS[0][str.length() - 1];
     }
+
+    static float atoi(String s) {
+        if (s.length() == 0) {
+            return -1;
+        }
+        int dotSize = 0;
+        float firstComponent = 0, secondComponent = 0;
+        boolean isNegative = false, floating = false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(c >= '0' && c < '9') {
+                if(floating) {
+                    dotSize *= 10;
+                    secondComponent = secondComponent * 10 + (c - 48);
+                } else {
+                    firstComponent = firstComponent * 10 + (c - 48);
+                }
+            } else if (c == '.' && !floating){
+                floating = true;
+                dotSize = 1;
+            } else if (c == '-' && i == 0) {
+                isNegative = true;
+            } else {
+                return -1;
+            }
+        }
+        if(dotSize > 0) {
+            secondComponent /= dotSize;
+        }
+        return (isNegative) ? firstComponent + secondComponent - 2 * (firstComponent + secondComponent) : firstComponent + secondComponent;
+    }
 }

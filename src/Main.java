@@ -142,6 +142,7 @@ public class Main {
         System.out.println("Biggest number : " + biggestNumber);
         System.out.println("Min insertion palindrome : " + Strings.minInsertion("abcd"));
         System.out.println("LPS : " + Strings.getLongestPalindromicSubSequence("BBABCBCAB"));
+        System.out.println("AtoI : " + Strings.atoi("-.42"));
     }
 
     static void moduleDP(Integer arr[]) {
