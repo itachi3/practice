@@ -191,7 +191,7 @@ public class Strings {
         return LPS[0][str.length() - 1];
     }
 
-    static float atoi(String s) {
+    static float atof(String s) {
         if (s.length() == 0) {
             return -1;
         }
