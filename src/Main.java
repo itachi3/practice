@@ -28,22 +28,39 @@ public class Main {
 
     static void moduleList(Integer arr[]) {
         LinkedList list = new LinkedList();
+
         list.populate(arr);
         list.print();
+
         list.swap(4, 5);
         list.print();
 
         list.reverseSize(3);
         list.print();
 
-        /*list.reverse();
+        list.reverse();
         list.print();
+
         list.reverse(list.getHead());
         list.print();
+
         list.delete(13);
         list.print();
+
         System.out.print("\nMiddle : " + list.findMiddle());
-        System.out.println("\nPalindrome : " + list.palindrome(list.getHead()));*/
+        System.out.println("\nPalindrome : " + list.palindrome(list.getHead()));
+
+        list.pairSwap();
+        list.print();
+
+        LinkedList l1 = new LinkedList();
+        l1.populate(new Integer[]{1, 3, 5, 7, 8, 9, 10});
+
+        LinkedList l2 = new LinkedList();
+        l2.populate(new Integer[]{2, 4, 6});
+
+        l1.head = LinkedList.merge(l1.head, l2.head);
+        l1.print();
 
         /*Circular List
         LinkedList circular = new LinkedList();

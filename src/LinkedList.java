@@ -4,7 +4,7 @@ import java.util.*;
  * Created by G on 10/04/17.
  */
 class LinkedList {
-    class Node {
+    static class Node {
         Integer data;
         Node next;
 
@@ -185,7 +185,7 @@ class LinkedList {
         }
     }
 
-    public Node getHead() {
+    Node getHead() {
         return head;
     }
 
@@ -272,5 +272,41 @@ class LinkedList {
             prevHead = currHead;
             itr = 1;
         }
+    }
+
+    void pairSwap() {
+        Node curr = head, next;
+        while (curr != null && curr.next != null) {
+            next = curr.next;
+            Integer temp = curr.data;
+            curr.data = next.data;
+            next.data = temp;
+            curr = next.next;
+        }
+    }
+
+    static Node merge(Node head1, Node head2) {
+        Node head = new Node(-1), curr = head;
+        while (head1 != null && head2 != null) {
+            Node nextHead2 = head2.next;
+            Node nextHead1 = head1.next;
+            Node listNext = curr.next;
+            if (head1.data < head2.data) {
+                curr.next = head1;
+                curr = head1;
+                head1 = nextHead1;
+            } else {
+                curr.next = head2;
+                curr = head2;
+                head2 = nextHead2;
+            }
+            curr.next = listNext;
+        }
+        if (head1 != null) {
+            curr.next = head1;
+        } else if (head2 != null) {
+            curr.next = head2;
+        }
+        return head.next;
     }
 }
