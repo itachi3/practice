@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 4, 5, 11, 8, 7, 9, 6};
-        //modulesBST(arr);
-        moduleList(arr);
+        Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 5, 11, 8, 7, 9, 6};
+        modulesBST(arr);
+        //moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
         //moduleDP(arr);
@@ -78,6 +78,7 @@ public class Main {
         Tree tree = new Tree();
         tree.populateBST(arr);
         tree.BFS();
+        tree.bottomView();
         tree.verticalOrder();
         System.out.print("\nDFS :");
         Tree.DFS(tree.getRoot());

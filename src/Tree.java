@@ -9,6 +9,7 @@ class Tree {
         Integer data;
         Node left;
         Node right;
+        Integer level;
 
         Node(Integer data) {
             this.data = data;
@@ -178,6 +179,29 @@ class Tree {
         System.out.println();
         for (Map.Entry<Integer, List<Integer>> entry : verticalOrderMap.entrySet()) {
             System.out.println(entry.getKey() + " => " + entry.getValue());
+        }
+    }
+
+    void bottomView() {
+        Queue<Node> traverseQueue = new LinkedList<>();
+        root.level = 0;
+        traverseQueue.add(root);
+        Map<Integer, Integer> sortedMap = new TreeMap<>();
+        while (!traverseQueue.isEmpty()) {
+            Node curr = traverseQueue.remove();
+            sortedMap.put(curr.level, curr.data);
+            if(curr.left != null) {
+                curr.left.level = curr.level - 1;
+                traverseQueue.add(curr.left);
+            }
+            if(curr.right != null) {
+                curr.right.level = curr.level + 1;
+                traverseQueue.add(curr.right);
+            }
+        }
+        System.out.println("Bottom View : ");
+        for(Map.Entry<Integer,Integer> entry : sortedMap.entrySet()) {
+            System.out.print(entry.getValue() + ", ");
         }
     }
 
