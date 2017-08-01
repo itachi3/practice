@@ -85,6 +85,7 @@ public class Main {
         System.out.print("\nInOrder : ");
         Tree.inOrder(tree.getRoot());
         System.out.println("\nHeight : " + tree.height(tree.getRoot()));
+        System.out.println("Diameter : " + tree.diameter(tree.getRoot(), new Tree.Height(0)));
         System.out.println("Max path sum : " + tree.pathSum(tree.getRoot(), 0));
         System.out.println("Search : " + tree.searchBST(18, tree.getRoot()));
         System.out.print("Left View : ");

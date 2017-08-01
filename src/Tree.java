@@ -264,6 +264,28 @@ class Tree {
         return pathSum;
     }
 
+    static class Height {
+        int h;
+
+        Height(int i) {
+            h = i;
+        }
+    }
+
+    int diameter(Node root, Height height) {
+        Height lh = new Height(0), rh = new Height(0);
+        if (root == null) {
+            height.h = 0;
+            return 0;
+        }
+
+        int ldia = diameter(root.left, lh);
+        int rdia = diameter(root.right, rh);
+
+        height.h = Math.max(lh.h, rh.h) + 1;
+        return Math.max(lh.h + rh.h + 1, Math.max(ldia, rdia));
+    }
+
     Node getRoot() {
         return root;
     }
