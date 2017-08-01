@@ -85,11 +85,12 @@ public class Main {
         System.out.print("\nInOrder : ");
         Tree.inOrder(tree.getRoot());
         System.out.println("\nHeight : " + tree.height(tree.getRoot()));
-        System.out.print("\nSearch : " + tree.searchBST(18, tree.getRoot()));
-        System.out.print("\nLeft View : ");
+        System.out.println("Max path sum : " + tree.pathSum(tree.getRoot(), 0));
+        System.out.println("Search : " + tree.searchBST(18, tree.getRoot()));
+        System.out.print("Left View : ");
         Tree.leftView(tree.getRoot(), 1);
-        System.out.print("\n LCA : " + Tree.LCA(5, 11, tree.getRoot()));
-        System.out.print("\n Delete : ");
+        System.out.print("\nLCA : " + Tree.LCA(5, 11, tree.getRoot()));
+        System.out.print("\nDelete : ");
         tree.deleteBST(14);
         System.out.print("\nInOrder : ");
         Tree.inOrder(tree.getRoot());

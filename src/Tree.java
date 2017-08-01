@@ -31,6 +31,8 @@ class Tree {
 
     static boolean balanced = true;
 
+    static int pathSum = 0;
+
     private Node insertBST(Integer key, Node head) {
         if (null == head) {
             head = new Node(key);
@@ -48,7 +50,6 @@ class Tree {
         Node head = this.root;
         this.root = insertBST(key, head);
     }
-
 
 
     private Node minValueNode(Node start) {
@@ -176,7 +177,7 @@ class Tree {
     void verticalOrder() {
         Map<Integer, List<Integer>> verticalOrderMap = new TreeMap<>();
         verticalOrderMap = modifiedDFS(verticalOrderMap, root, 0);
-        System.out.println();
+        System.out.println("\nVertical order : ");
         for (Map.Entry<Integer, List<Integer>> entry : verticalOrderMap.entrySet()) {
             System.out.println(entry.getKey() + " => " + entry.getValue());
         }
@@ -190,38 +191,38 @@ class Tree {
         while (!traverseQueue.isEmpty()) {
             Node curr = traverseQueue.remove();
             sortedMap.put(curr.level, curr.data);
-            if(curr.left != null) {
+            if (curr.left != null) {
                 curr.left.level = curr.level - 1;
                 traverseQueue.add(curr.left);
             }
-            if(curr.right != null) {
+            if (curr.right != null) {
                 curr.right.level = curr.level + 1;
                 traverseQueue.add(curr.right);
             }
         }
-        System.out.println("Bottom View : ");
-        for(Map.Entry<Integer,Integer> entry : sortedMap.entrySet()) {
+        System.out.print("\nBottom View : ");
+        for (Map.Entry<Integer, Integer> entry : sortedMap.entrySet()) {
             System.out.print(entry.getValue() + ", ");
         }
     }
 
     private Map modifiedDFS(Map<Integer, List<Integer>> verticalOrderMap, Node node, int level) {
-        if(node == null) {
+        if (node == null) {
             return verticalOrderMap;
         }
         List<Integer> valueList = new ArrayList<>();
-        if(verticalOrderMap.containsKey(level)) {
+        if (verticalOrderMap.containsKey(level)) {
             valueList = verticalOrderMap.get(level);
         }
         valueList.add(node.data);
         verticalOrderMap.put(level, valueList);
-        verticalOrderMap = modifiedDFS(verticalOrderMap, node.left, level -1);
+        verticalOrderMap = modifiedDFS(verticalOrderMap, node.left, level - 1);
         verticalOrderMap = modifiedDFS(verticalOrderMap, node.right, level + 1);
         return verticalOrderMap;
     }
 
     static int isBalanced(Node root, int h) {
-        if(balanced) {
+        if (balanced) {
             if (root == null) {
                 return h;
             }
@@ -246,9 +247,21 @@ class Tree {
         }
         int mid = (l + h) / 2;
         Node root = new Node(arr[mid]);
-        root.left = populateBalanced(arr,  l, mid - 1);
-        root.right = populateBalanced(arr,  mid + 1, h);
+        root.left = populateBalanced(arr, l, mid - 1);
+        root.right = populateBalanced(arr, mid + 1, h);
         return root;
+    }
+
+    int pathSum(Node root, int sum) {
+        if (root == null) {
+            if (pathSum < sum) {
+                pathSum = sum;
+            }
+            return pathSum;
+        }
+        pathSum(root.left, sum + root.data);
+        pathSum(root.right, sum + root.data);
+        return pathSum;
     }
 
     Node getRoot() {
