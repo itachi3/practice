@@ -80,7 +80,8 @@ public class Main {
         tree.BFS();
         tree.bottomView();
         tree.verticalOrder();
-        System.out.print("\nDFS :");
+        tree.serialize();
+        System.out.print("DFS :");
         Tree.DFS(tree.getRoot());
         System.out.print("\nInOrder : ");
         Tree.inOrder(tree.getRoot());

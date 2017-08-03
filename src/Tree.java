@@ -286,6 +286,25 @@ class Tree {
         return Math.max(lh.h + rh.h + 1, Math.max(ldia, rdia));
     }
 
+    void serialize() {
+        List<Integer> serialized = new ArrayList<>();
+        List<Integer> position = new ArrayList<>();
+        serialize(root, serialized, position, 0);
+        System.out.println("Serialization : ");
+        System.out.println(serialized);
+        System.out.println(position);
+    }
+
+    private void serialize(Node root, List<Integer> val, List<Integer> position, int i) {
+        if (root == null) {
+            return;
+        }
+        val.add(root.data);
+        position.add(i);
+        serialize(root.left, val, position, 2 * i + 1);
+        serialize(root.right, val, position, 2 * i + 2);
+    }
+
     Node getRoot() {
         return root;
     }
