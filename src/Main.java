@@ -10,12 +10,13 @@ public class Main {
         //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        moduleArray(arr);
+        //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
         //moduleGraph(graphMatrix);
         //moduleString();
+        moduleRecursion();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -139,18 +140,11 @@ public class Main {
     }
 
     static void moduleString() {
-        char[] val = "ABC".toCharArray();
-        System.out.println("Permutation");
-        Strings.permute(val, 0, val.length);
-        System.out.println("Permutation LowerCase");
-        Strings.permuteLowerCase(val, 0, val.length);
         System.out.println("Lottery possible : " + Strings.isLotteryTicket("1122334", new HashSet<>()));
         System.out.println("Min value of expr : " + Strings.minValueOfTheExpression("1+2*3+4*5"));
         String[] values = {"54", "546", "548", "60"};
         List<String> biggestNumber = Arrays.stream(values).sorted((e1, e2) -> (e2 + e1).compareTo(e1 + e2)).collect(Collectors.toList());
         System.out.println("Biggest number : " + biggestNumber);
-        System.out.println("Min insertion palindrome : " + Strings.minInsertion("abcd"));
-        System.out.println("LPS : " + Strings.getLongestPalindromicSubSequence("BBABCBCAB"));
         System.out.println("AtoI : " + Strings.atof("-.42"));
     }
 
@@ -161,6 +155,18 @@ public class Main {
         System.out.println("Sub-array of given sum : " + Arrays.toString(DP.subArrayOfGivenSum(arr, 23)));
         Integer[] tickets = new Integer[]{1, 2, 4, 5, 7, 29, 30};
         System.out.println("Ticket price : " + DP.getTicketPrice(tickets));
+        System.out.println("Min insertion palindrome : " + Strings.minInsertion("abcd"));
+        System.out.println("LPS : " + Strings.getLongestPalindromicSubSequence("BBABCBCAB"));
+    }
+
+    static void moduleRecursion() {
+        char[] val = "ABC".toCharArray();
+        System.out.println("Permutation");
+        Strings.permute(val, 0, val.length);
+        System.out.println("Permutation LowerCase");
+        Strings.permuteLowerCase(val, 0, val.length);
+        Array.getMaxAs(0, 0, 3, 0);
+        System.out.println("Max char count : " + Array.maxLength);
     }
 
     static void moduleGraph(Integer[][] graphMatrix) {

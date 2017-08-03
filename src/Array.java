@@ -10,6 +10,8 @@ public class Array {
 
     private static int top1, top2;
 
+    public static int maxLength = 0;
+
     static {
         top1 = -1;
         top2 = stack.length;
@@ -413,25 +415,38 @@ public class Array {
     }
 
     static int getDeflectionPoint(Integer[] arr) {
-        Integer []minFromLeft = Arrays.copyOf(arr, arr.length);
-        Integer []minFromRight = Arrays.copyOf(arr, arr.length);
+        Integer[] minFromLeft = Arrays.copyOf(arr, arr.length);
+        Integer[] minFromRight = Arrays.copyOf(arr, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            if(i-1>0) {
-                minFromLeft[i] = (arr[i] < minFromLeft[i-1]) ? arr[i] : minFromLeft[i-1];
+            if (i - 1 > 0) {
+                minFromLeft[i] = (arr[i] < minFromLeft[i - 1]) ? arr[i] : minFromLeft[i - 1];
             }
             int rightIndex = arr.length - (i + 1);
-            if(rightIndex < arr.length - 1) {
+            if (rightIndex < arr.length - 1) {
                 minFromRight[rightIndex] = (arr[rightIndex] < minFromRight[rightIndex + 1]) ? arr[rightIndex] : minFromRight[rightIndex + 1];
             }
         }
         for (int i = 0; i < arr.length; i++) {
             //Extremes are not considered deflection point
-            if(i - 1 > 0 && i < arr.length - 1) {
-                if(minFromLeft[i-1] < arr[i] && minFromRight[i+1] > arr[i]) {
+            if (i - 1 > 0 && i < arr.length - 1) {
+                if (minFromLeft[i - 1] < arr[i] && minFromRight[i + 1] > arr[i]) {
                     return arr[i];
                 }
             }
         }
         return -1;
+    }
+
+    static int getMaxAs(int letterIndex, int duplicateIndex, int limit, int currentLength) {
+        if (duplicateIndex == limit) {
+            maxLength = currentLength > maxLength ? currentLength : maxLength;
+            return maxLength;
+        }
+        if (letterIndex < limit) {
+            currentLength += 1;
+            letterIndex += 1;
+            getMaxAs(letterIndex, duplicateIndex, limit, currentLength);
+        }
+        return getMaxAs(letterIndex, duplicateIndex + 1, limit, currentLength * 2);
     }
 }
