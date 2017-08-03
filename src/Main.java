@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) throws Exception {
         Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 5, 11, 8, 7, 9, 6};
-        modulesBST(arr);
+        //modulesBST(arr);
         //moduleList(arr);
         //moduleMinHeap(arr);
-        //moduleArray(arr);
+        moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
@@ -130,7 +130,6 @@ public class Main {
         int[] ar1 = {2, 3, 7, 10, 12};
         int[] ar2 = {1, 5, 7, 8};
         System.out.println("Max path sum : " + Array.maxSum(ar1, ar2));
-        System.out.println("Min coin needed : " + Array.minCoinChange(ar1, 13));
 
         Map<String, List<Integer>> movieMap = new HashMap<>();
         movieMap.put("Shining", Arrays.asList(14, 15, 16));
@@ -158,6 +157,7 @@ public class Main {
     static void moduleDP(Integer arr[]) {
         System.out.println("LIS : " + DP.longestIncreasingSubsequence(arr));
         System.out.println("Minimum jumps : " + DP.minJumps(arr));
+        System.out.println("Min coin needed : " + DP.minCoinChange(arr, 13));
         System.out.println("Sub-array of given sum : " + Arrays.toString(DP.subArrayOfGivenSum(arr, 23)));
         Integer[] tickets = new Integer[]{1, 2, 4, 5, 7, 29, 30};
         System.out.println("Ticket price : " + DP.getTicketPrice(tickets));

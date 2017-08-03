@@ -301,26 +301,6 @@ public class Array {
         return val;
     }
 
-    static int minCoinChange(int[] coins, int sum) {
-        int[] minChange = new int[sum + 1];
-        for (int i = 0; i < sum; i++) {
-            minChange[i] = Integer.MAX_VALUE;
-        }
-        minChange[0] = 0;
-        int min, afterChange;
-        for (int i = 1; i <= sum; i++) {
-            min = Integer.MAX_VALUE;
-            for (int j = 0; j < coins.length; j++) {
-                afterChange = i - coins[j];
-                if (afterChange >= 0 && min > minChange[afterChange]) {
-                    min = minChange[afterChange] + 1;
-                }
-            }
-            minChange[i] = min;
-        }
-        return minChange[sum];
-    }
-
     static int maxSum(int[] arr1, int[] arr2) {
         int sum1 = 0, sum2 = 0, j = 0, sum = 0;
 
