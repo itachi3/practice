@@ -4,7 +4,7 @@ import java.util.LinkedList;
 /**
  * Created by G on 07/05/17.
  */
-public class Array {
+class Array {
 
     private static int[] stack = new int[10];
 
