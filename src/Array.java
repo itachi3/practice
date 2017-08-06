@@ -449,4 +449,21 @@ class Array {
         }
         return getMaxAs(letterIndex, duplicateIndex + 1, limit, currentLength * 2);
     }
+
+    static void diffPaths(int[] arr, int sum, int currSum, int currIndex, List<Integer> currElements) {
+        if(currIndex == arr.length || currSum > sum) {
+            return;
+        }
+
+        if(currSum == sum) {
+            System.out.println(currElements);
+            return;
+        }
+
+
+        currElements.add(arr[currIndex]);
+        diffPaths(arr, sum, currSum + arr[currIndex], currIndex + 1, currElements);
+        currElements.remove(currElements.size() - 1);
+        diffPaths(arr, sum, currSum, currIndex + 1, currElements);
+    }
 }

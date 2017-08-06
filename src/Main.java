@@ -167,6 +167,8 @@ public class Main {
         Strings.permuteLowerCase(val, 0, val.length);
         Array.getMaxAs(0, 0, 3, 0);
         System.out.println("Max char count : " + Array.maxLength);
+        int arr[] = new int[]{10,1,2,7,6,1,5};
+        Array.diffPaths(arr, 8, 0, 0, new ArrayList<>());
     }
 
     static void moduleGraph(Integer[][] graphMatrix) {
