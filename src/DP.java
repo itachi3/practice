@@ -1,7 +1,7 @@
 /**
  * Created by G on 07/05/17.
  */
-public class DP {
+class DP {
     static int longestIncreasingSubsequence(Integer arr[]) {
         int max = 0;
         int LIS[] = new int[arr.length];

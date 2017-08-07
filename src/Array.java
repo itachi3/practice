@@ -460,7 +460,6 @@ class Array {
             return;
         }
 
-
         currElements.add(arr[currIndex]);
         diffPaths(arr, sum, currSum + arr[currIndex], currIndex + 1, currElements);
         currElements.remove(currElements.size() - 1);

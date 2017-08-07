@@ -16,7 +16,7 @@ public class Main {
         //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
         //moduleGraph(graphMatrix);
         //moduleString();
-        moduleRecursion();
+        //moduleRecursion();
     }
 
     static void moduleLRUCache(Integer arr[]) {
@@ -167,7 +167,7 @@ public class Main {
         Strings.permuteLowerCase(val, 0, val.length);
         Array.getMaxAs(0, 0, 3, 0);
         System.out.println("Max char count : " + Array.maxLength);
-        int arr[] = new int[]{10,1,2,7,6,1,5};
+        int arr[] = new int[]{10, 1, 2, 7, 6, 1, 5};
         Array.diffPaths(arr, 8, 0, 0, new ArrayList<>());
     }
 

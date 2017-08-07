@@ -1,10 +1,9 @@
-import java.text.ParseException;
 import java.util.*;
 
 /**
  * Created by G on 17/06/17.
  */
-public class Strings {
+class Strings {
     // https://www.careercup.com/question?id=5708966056165376
     // Valid if 7 cuts and each number between 1 to 59
     static boolean isLotteryTicket(String s, Set<Integer> cuts) {
