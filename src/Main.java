@@ -17,6 +17,11 @@ public class Main {
         //moduleGraph(graphMatrix);
         //moduleString();
         //moduleRecursion();
+        moduleGeneral();
+    }
+
+    static void moduleGeneral() {
+        System.out.println("Quantity after K units : " + General.afterUnits(5, 0, 0, 2, 0));
     }
 
     static void moduleLRUCache(Integer arr[]) {
