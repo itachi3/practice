@@ -121,6 +121,9 @@ class DP {
         return minChange[sum];
     }
 
+    /*
+        Activity selection problem greedy preferred - here we have DP
+     */
     static class CustomPair {
         int start;
         int end;
