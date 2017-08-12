@@ -11,13 +11,13 @@ public class Main {
         //moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
-        //moduleDP(arr);
+        moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
         //moduleGraph(graphMatrix);
         //moduleString();
         //moduleRecursion();
-        moduleGeneral();
+        //moduleGeneral();
     }
 
     static void moduleGeneral() {
@@ -162,6 +162,9 @@ public class Main {
         System.out.println("Ticket price : " + DP.getTicketPrice(tickets));
         System.out.println("Min insertion palindrome : " + Strings.minInsertion("abcd"));
         System.out.println("LPS : " + Strings.getLongestPalindromicSubSequence("BBABCBCAB"));
+        Integer start[] = {1,3,0,5,8,5};
+        Integer end[] = {2,4,6,7,9,9};
+        System.out.println("Max work : " + DP.maxWorkPossible(start, end));
     }
 
     static void moduleRecursion() {

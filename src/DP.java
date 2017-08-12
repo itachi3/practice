@@ -120,4 +120,52 @@ class DP {
         }
         return minChange[sum];
     }
+
+    static class CustomPair {
+        int start;
+        int end;
+        int tasks;
+
+        CustomPair(int i, int j, int length) {
+            this.start = i;
+            this.end = j;
+            this.tasks = length;
+        }
+    }
+
+    static int maxWorkPossible(Integer[] start, Integer[] end) {
+        CustomPair table[][] = new CustomPair[start.length][2];
+
+        for (int i = 0; i < start.length; i++) {
+            table[i][0] = new CustomPair(0,0,0);
+            table[i][1] = new CustomPair(0,0,0);
+        }
+
+        table[0][1].start = start[0];
+        table[0][1].end = end[0];
+        table[0][1].tasks = 1;
+        for (int i = 1; i < start.length; i++) {
+            //N excluded
+            table[i][0] = (table[i-1][0].tasks > table[i-1][1].tasks) ? table[i-1][0] : table[i-1][1];
+
+            //N included
+            int includedTasks = 0, excludedTasks = 0;
+            if(start[i] >= table[i-1][1].end || end[i] <= table[i-1][1].start) {
+                includedTasks = table[i-1][1].tasks + 1;
+            } else {
+                excludedTasks = table[i-1][0].tasks + 1;
+            }
+            if(includedTasks > excludedTasks) {
+                table[i][1].tasks = includedTasks;
+                table[i][1].start = (start[i] < table[i-1][1].start) ? start[i] : table[i-1][1].start;
+                table[i][1].end = (end[i] > table[i-1][1].end) ? end[i] : table[i-1][1].end;
+            } else {
+                table[i][1].tasks = excludedTasks;
+                table[i][1].start = (start[i] < table[i-1][0].start) ? start[i] : table[i-1][0].start;
+                table[i][1].end = (end[i] > table[i-1][0].end) ? end[i] : table[i-1][0].end;
+            }
+        }
+
+        return Math.max(table[start.length -1][0].tasks, table[start.length - 1][1].tasks);
+    }
 }
