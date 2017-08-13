@@ -165,6 +165,9 @@ public class Main {
         Integer start[] = {1,3,0,5,8,5};
         Integer end[] = {2,4,6,7,9,9};
         System.out.println("Max work : " + DP.maxWorkPossible(start, end));
+        Integer partition[] = {1,6,5,11};
+        int totalSum = Arrays.stream(partition).mapToInt(Integer::intValue).sum();
+        System.out.println("Min partition sum : " + DP.minPartitionDifference(partition, 0, totalSum,0));
     }
 
     static void moduleRecursion() {

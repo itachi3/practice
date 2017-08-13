@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by G on 07/05/17.
  */
@@ -119,6 +121,15 @@ class DP {
             minChange[i] = min;
         }
         return minChange[sum];
+    }
+
+    static int minPartitionDifference(Integer[] partition, int currIndex, int totalSum , int currSum) {
+        if(currIndex == partition.length) {
+            return Math.abs(totalSum - 2 * currSum);
+        }
+        int inc = minPartitionDifference(partition, currIndex + 1, totalSum, currSum + partition[currIndex]);
+        int exc = minPartitionDifference(partition, currIndex + 1, totalSum, currSum);
+        return Math.min(inc, exc);
     }
 
     /*
