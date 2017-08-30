@@ -309,4 +309,27 @@ class LinkedList {
         }
         return head.next;
     }
+
+    private static boolean stopExchange = false;
+
+    Node reOrderList(Node curr) {
+        if (curr == null) {
+            return null;
+        }
+
+        Node last = reOrderList(curr.next);
+        if(staticHead == last || staticHead.next == last) {
+            stopExchange = true;
+        }
+        if (last != null && !stopExchange) {
+            Node temp = staticHead.next;
+            if(staticHead.next != null) {
+                staticHead.next = last;
+            }
+            last.next = temp;
+            staticHead = temp;
+            curr.next = null;
+        }
+        return curr;
+    }
 }

@@ -8,10 +8,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
-        //moduleList(arr);
+        moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
-        moduleDP(arr);
+        //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
         //moduleGraph(graphMatrix);
@@ -67,6 +67,11 @@ public class Main {
 
         l1.head = LinkedList.merge(l1.head, l2.head);
         l1.print();
+
+        LinkedList l3 = new LinkedList();
+        l3.populate(new Integer[]{1,2,3,4,5});
+        l3.reOrderList(l3.head);
+        l3.print();
 
         /*Circular List
         LinkedList circular = new LinkedList();
@@ -151,6 +156,7 @@ public class Main {
         List<String> biggestNumber = Arrays.stream(values).sorted((e1, e2) -> (e2 + e1).compareTo(e1 + e2)).collect(Collectors.toList());
         System.out.println("Biggest number : " + biggestNumber);
         System.out.println("AtoI : " + Strings.atof("-.42"));
+        System.out.println("Longest string : " + Strings.longestSubString("abcabdcbb"));
     }
 
     static void moduleDP(Integer arr[]) {

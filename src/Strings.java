@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.LinkedList;
 
 /**
  * Created by G on 17/06/17.
@@ -175,5 +176,32 @@ class Strings {
             secondComponent /= dotSize;
         }
         return (isNegative) ? firstComponent + secondComponent - 2 * (firstComponent + secondComponent) : firstComponent + secondComponent;
+    }
+
+    static int longestSubString(String s) {
+        Queue<Character> currCharQueue = new LinkedList<>();
+        Map<Character, Boolean> currCharMap = new HashMap<>();
+        int maxLength = 0;
+        for (int i = 0; i < s.length(); i++) {
+            Character currChar = s.charAt(i);
+
+            if(currCharMap.containsKey(currChar)) {
+                while (!currCharQueue.isEmpty()) {
+                    Character poppedChar = currCharQueue.remove();
+                    currCharMap.remove(poppedChar);
+                    if(poppedChar == currChar) {
+                        break;
+                    }
+                }
+            }
+
+            currCharQueue.add(currChar);
+            currCharMap.put(currChar, true);
+
+            if(currCharQueue.size() > maxLength) {
+                maxLength = currCharQueue.size();
+            }
+        }
+        return maxLength;
     }
 }
