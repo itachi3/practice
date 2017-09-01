@@ -1,5 +1,7 @@
 import java.util.*;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by G on 17/06/17.
@@ -203,5 +205,34 @@ class Strings {
             }
         }
         return maxLength;
+    }
+
+    static Object sum(String s1, String s2) {
+        int []sumArray = new int[s1.length() + s2.length()];
+
+        for (int i = s1.length() - 1; i >=0 ; i--) {
+            for(int j = s2.length() - 1; j >=0; j--) {
+                int prod = (s1.charAt(i) - '0') * (s2.charAt(j) - '0');
+                int p1 = i + j, p2 = i + j + 1;
+
+                sumArray[p2] += prod%10;
+                sumArray[p1] += prod/10 + sumArray[p2]/10;
+                sumArray[p2] %= 10;
+
+                while (sumArray[p1] > 10) {
+                    sumArray[p1-1] += sumArray[p1]/10;
+                    sumArray[p1] %= 10;
+                    p1--;
+                }
+            }
+        }
+
+        StringBuilder s = new StringBuilder();
+        for(int i : sumArray) {
+            if (i > 0 || s.length() > 0) {
+                s.append(i);
+            }
+        }
+        return s.length() == 0 ? "0" : s.toString();
     }
 }

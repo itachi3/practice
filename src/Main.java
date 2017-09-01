@@ -8,14 +8,14 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Integer arr[] = {13, 3, 14, 1, 4, 18, 2, 12, 10, 4, 4, 5, 11, 8, 7, 9, 6};
         //modulesBST(arr);
-        moduleList(arr);
+        //moduleList(arr);
         //moduleMinHeap(arr);
         //moduleArray(arr);
         //moduleDP(arr);
         //moduleLRUCache(arr);
         //Integer graphMatrix[][] = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};
         //moduleGraph(graphMatrix);
-        //moduleString();
+        moduleString();
         //moduleRecursion();
         //moduleGeneral();
     }
@@ -69,8 +69,8 @@ public class Main {
         l1.print();
 
         LinkedList l3 = new LinkedList();
-        l3.populate(new Integer[]{1,2,3,4,5});
-        l3.reOrderList(l3.head);
+        l3.populate(new Integer[]{1,2,3,4,5,6});
+        l3.head = l3.reOrderList(l3.head);
         l3.print();
 
         /*Circular List
@@ -150,6 +150,7 @@ public class Main {
     }
 
     static void moduleString() {
+        System.out.println("Sum string :" + Strings.sum("23", "45"));
         System.out.println("Lottery possible : " + Strings.isLotteryTicket("1122334", new HashSet<>()));
         System.out.println("Min value of expr : " + Strings.minValueOfTheExpression("1+2*3+4*5"));
         String[] values = {"54", "546", "548", "60"};

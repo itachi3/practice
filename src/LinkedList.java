@@ -318,16 +318,16 @@ class LinkedList {
         }
 
         Node last = reOrderList(curr.next);
-        if(staticHead == last || staticHead.next == last) {
+        if(head == last || head.next == last) {
             stopExchange = true;
         }
         if (last != null && !stopExchange) {
-            Node temp = staticHead.next;
-            if(staticHead.next != null) {
-                staticHead.next = last;
+            Node temp = head.next;
+            if(head.next != null) {
+                head.next = last;
             }
             last.next = temp;
-            staticHead = temp;
+            head = temp;
             curr.next = null;
         }
         return curr;
